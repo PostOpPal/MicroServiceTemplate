@@ -1,2 +1,4 @@
 sqlalchemy_models/
+!sqlalchemy_models/README.md
 generated_models/
+!generated_models/README.md
