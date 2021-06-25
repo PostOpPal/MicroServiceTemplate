@@ -1,5 +1,13 @@
 # Initial Setup
-
+- Install mysql
+  ```
+  sudo apt install mysql-server
+  ```
+- Make the mysql username and password **"root"**, ("should be true by default)
+- Start the mysql server
+  ```
+  sudo systemctl start mysql
+  ```
 - Install virtualenv
   ```
   pip install virtualenv
@@ -28,3 +36,7 @@
   pip freeze > requirements.txt
   ```
 # Running Application Localy
+- Ensure the virtual environment is running
+  ```
+  source ./env/bin/activate
+  ```
