@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from configs.build_scripts.configparser import *
+from configs.parser.configparser import *
 
 @parse("configs/config.json","jwt")
 @dataclass
