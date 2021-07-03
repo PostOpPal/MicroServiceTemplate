@@ -1,2 +1,6 @@
 # Models
-This folder contains any models that are created by hand.
+- The json_schemas folder contains all the schemas for input and output to the server
+- The generated models folder contains classes that map to the schemas, these are created by running the setup.sh script.
+  ```
+  sh ./setup.sh
+  ```

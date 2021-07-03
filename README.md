@@ -1,17 +1,10 @@
+# Install Dependencies
+- All applications needed can be installed with the install.sh script
+  ```
+  sh ./scripts/install.sh
+  ```
+
 # Initial Setup
-- Install mysql
-  ```
-  sudo apt install mysql-server
-  ```
-- Make the mysql username and password **"root"**, ("should be true by default)
-- Start the mysql server
-  ```
-  sudo systemctl start mysql
-  ```
-- Install virtualenv
-  ```
-  pip install virtualenv
-  ```
 - Create a virtual environment with virtualenv
   ```
   virtualenv env
@@ -22,11 +15,11 @@
   ```
 - Install the requirments
   ```
-  pip install requirements.txt
+  pip install -r requirements.txt
   ```
-- Run the setup script to generate the python models for json schemas and for sql alchemy
+- Run the setup script to generate the python models for json schemas and sqlalchemy
   ```
-  sh ./shell_scripts/setup.sh
+  sh ./scripts/setup.sh
   ```
 
 # Installing New Requirments
@@ -36,7 +29,20 @@
   pip freeze > requirements.txt
   ```
 # Running Application Localy
-- Ensure the virtual environment is running
+- Ensure the virtual environment is running if not already
   ```
   source ./env/bin/activate
+  ```
+- Run the local_run.sh script
+  ```
+  sh ./scripts/local_run.sh
+  ```
+# Testing
+- Ensure the virtual environment is running if not already
+  ```
+  source ./env/bin/activate
+  ```
+- To run the component tests use the test.sh script
+  ```
+  sh ./scripts/test.sh
   ```
