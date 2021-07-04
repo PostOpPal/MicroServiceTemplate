@@ -1,5 +1,9 @@
+import functools
 import pika, sys, os
 from pika.adapters.blocking_connection import BlockingChannel
+import json
+
+
 
 class Broker:
     connection: pika.BlockingConnection
@@ -15,6 +19,34 @@ class Broker:
             self.queues[name] = funct
             return funct
         return wrapper
+
+    @staticmethod
+    def deserialise(klass):
+        def decorator(funct):
+            @functools.wraps(funct)
+            def wrapper(*args, **kwargs):
+                body = args[3]
+                deserialise_body = klass(json.loads(body))
+                args[3] = deserialise_body
+                return funct(*args, **kwargs)
+            return wrapper
+        return decorator
+
+    @staticmethod
+    def _serialize(obj):
+        return obj.__dict__
+
+    @staticmethod
+    def serialise():
+        def decorator(funct):
+            @functools.wraps(funct)
+            def wrapper(*args, **kwargs):
+                response = funct(*args, **kwargs)
+                response_json = json.dumps(response.__dict__, default = self._serialize)
+                return response_json
+            return wrapper
+        return decorator
+
 
     def create_all(self):
         for queue in self.queues.keys():

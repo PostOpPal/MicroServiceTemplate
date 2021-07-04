@@ -28,9 +28,11 @@ db = SQLAlchemy(app)
 from sqlalchemy_models.models import *
 db.create_all()
 
-broker = Broker(app)
+broker: Broker
+if app.config.get("QUEUE_BROKER_URI") is not None:
+    broker = Broker(app)
 #import any queues here
-broker.create_all()
+    broker.create_all()
 
 
 
