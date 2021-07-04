@@ -15,3 +15,6 @@
   ```
   jwtConfig = JWTConfig()
   ```
+
+# Flask Config
+- All flask app configs are set in the flask_config folder in classes. Configs must be set for local, testing and deployment. 
